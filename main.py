@@ -3,8 +3,8 @@ import turtle as trtl
 
 #-----setup-----
 apple_image = "apple.gif" # Store the file name of your shape
-xOffset = 20
-yOffset = 20
+xOffset = -20
+yOffset = -45
 wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
 wn.addshape(apple_image) # Make the screen aware of the new file
@@ -12,6 +12,7 @@ wn.bgpic("background.gif")
 apple = trtl.Turtle()
 wn.update()
 wn.tracer(False)
+apple.penup()
 
 
 
@@ -24,15 +25,20 @@ def draw_apple(active_apple):
 
 def appledrop():
   wn.tracer(True)
+  apple.clear()
   apple.penup()
   apple.goto(apple.xcor(), -250)
+  apple.hideturtle()
   wn.tracer(False)
+
 
 def draw_letter(letter,active_apple):
   active_apple.color("white")
   remPos = active_apple.position()
   active_apple.setpos(active_apple.xcor() + xOffset, active_apple.ycor() + yOffset)
   active_apple.write(letter, font=("Arial", 50, "bold"))
+  active_apple.setpos(remPos)
+
 #-----function calls-----
 draw_apple(apple)
 wn.onkeypress(appledrop, "a")
