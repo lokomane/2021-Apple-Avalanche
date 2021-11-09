@@ -31,6 +31,8 @@ def reset_apple(active_apple):
 
 def draw_apple(active_apple, letter):
   active_apple.penup()
+  active_apple.goto(rand.randint(-screen_width / 2, screen_width / 2),
+                    rand.randint(-screen_height / 2, screen_height / 2))
   active_apple.shape(apple_image)
   active_apple.showturtle()
   draw_letter(letter, active_apple)
@@ -132,6 +134,7 @@ def checkZ():
     appledrop()
 #-----function calls-----
 draw_apple(apple, "G")
+
 wn.onkeypress(checkA, "a")
 wn.onkeypress(checkB, "b")
 wn.onkeypress(checkC, "c")
